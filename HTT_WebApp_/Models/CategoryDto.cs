@@ -2,7 +2,7 @@
 
 namespace HTT_WebApp_.Models
 {
-    public class Category
+    public class CategoryDto
     {
         [Key]
         public int Id { get; set; }

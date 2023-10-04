@@ -6,9 +6,9 @@ namespace HTT_WebApp_.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly IHTTAppService<Category> _service;
+        private readonly IHTTAppService<CategoryDto> _service;
 
-        public CategoryController(IHTTAppService<Category> service)
+        public CategoryController(IHTTAppService<CategoryDto> service)
         {
             _service = service;
         }

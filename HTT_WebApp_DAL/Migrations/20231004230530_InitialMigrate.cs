@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace HTT_WebApp_.Migrations
+namespace HTT_WebApp_DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitialMigrate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

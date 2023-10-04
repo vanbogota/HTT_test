@@ -1,25 +1,31 @@
-﻿using HTT_WebApp_.Context;
+﻿using AutoMapper;
 using HTT_WebApp_.Models;
+using HTT_WebApp_DAL.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace HTT_WebApp_.Services.Impl
 {
-    public class CategoryService : IHTTAppService<Category>
+    public class CategoryService : IHTTAppService<CategoryDto>
     {
         private readonly HTTAppDbContext _db;
+        private readonly IMapper _mapper;
 
-        public CategoryService(HTTAppDbContext db)
+        public CategoryService(HTTAppDbContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
         }
-        public async Task<IEnumerable<Category>> GetAllAsync()
+        public async Task<IEnumerable<CategoryDto>> GetAllAsync()
         {
-            return await _db.Categories.ToListAsync();
+            var categories = await _db.Categories.ToListAsync();
+            return _mapper.Map<List<CategoryDto>>(categories);                         
         }
 
-        public async Task<Category?> GetByIdAsync(int id)
+        public async Task<CategoryDto?> GetByIdAsync(int id)
         {
-            return await _db.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            var category = await _db.Categories.FirstOrDefaultAsync(c => c.Id == id);
+            return _mapper.Map<CategoryDto>(category);
+             
         }
     }
 }

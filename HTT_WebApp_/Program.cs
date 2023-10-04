@@ -1,8 +1,10 @@
-using HTT_WebApp_.Context;
+using HTT_WebApp_.Mapper;
 using HTT_WebApp_.Models;
 using HTT_WebApp_.Services;
 using HTT_WebApp_.Services.Impl;
+using HTT_WebApp_DAL.Context;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace HTT_WebApp_
 {
@@ -16,15 +18,27 @@ namespace HTT_WebApp_
             #region Add services to the container.
 
             builder.Services.AddControllersWithViews();
-            builder.Services.AddScoped<IHTTAppService<Product>,ProductService>();
-            builder.Services.AddScoped<IHTTAppService<Category>,CategoryService>();
-
+            builder.Services.AddScoped<IHTTAppService<ProductDto>,ProductService>();
+            builder.Services.AddScoped<IHTTAppService<CategoryDto>,CategoryService>();
+                        
             #endregion
 
             #region Configure DB Context.
 
             builder.Services.AddDbContext<HTTAppDbContext>(options =>
-            options.UseSqlServer(connectionString), ServiceLifetime.Singleton);
+            options.UseSqlServer(connectionString));
+            
+            #endregion
+
+            #region Configure Mapper
+
+            var mapperConfiguration = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<MappingProfile>();
+            });
+            var mapper = mapperConfiguration.CreateMapper();
+
+            builder.Services.AddAutoMapper(typeof(Program));
 
             #endregion
 
@@ -46,7 +60,7 @@ namespace HTT_WebApp_
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Home}/{action=Index}");
 
             app.Run();
         }

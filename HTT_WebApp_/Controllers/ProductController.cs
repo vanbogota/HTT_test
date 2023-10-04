@@ -7,9 +7,9 @@ namespace HTT_WebApp_.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IHTTAppService<Product> _service;
+        private readonly IHTTAppService<ProductDto> _service;
 
-        public ProductController(IHTTAppService<Product> service)
+        public ProductController(IHTTAppService<ProductDto> service)
         {
             _service = service;
         }
