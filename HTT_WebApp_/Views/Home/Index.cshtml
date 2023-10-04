@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h4 class="display-4">Добро пожаловать!</h4>
+    <h4>Выберете пункт ниже:</h4>
+    <a class="nav-link text-dark" asp-controller="Product" asp-action="ProductsWithCategories">Продукты с категориями</a>
+    <a class="nav-link text-dark" asp-controller="Product" asp-action="Products">Все продукты в базе данных</a>
+    <a class="nav-link text-dark" asp-controller="Category" asp-action="Categories">Все категории в базе данных</a>
+</div>

@@ -1,0 +1,15 @@
+﻿@model List<Product>
+<h4>Продукты с категориями</h4>
+<table>
+    <tr>
+        <th>Наименование продукта</th>
+        <th>Наименование категории</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.ProductName</td>
+            <td>@product.Category.CategoryName</td>
+        </tr>
+    }
+</table>
