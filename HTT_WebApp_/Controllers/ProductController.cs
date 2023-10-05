@@ -15,7 +15,7 @@ namespace HTT_WebApp_.Controllers
         }
          
         /// <summary>
-        /// Returns all products without categories.
+        /// GET request all products without categories.
         /// </summary>
         /// <returns>List of Product</returns>
         public async Task<IActionResult> Products()
@@ -24,7 +24,7 @@ namespace HTT_WebApp_.Controllers
             return View(products);
         }
         /// <summary>
-        /// Returns all products with categories.
+        /// GET request all products with categories.
         /// </summary>
         /// <returns>List of Product</returns>
         public async Task<IActionResult> ProductsWithCategories()

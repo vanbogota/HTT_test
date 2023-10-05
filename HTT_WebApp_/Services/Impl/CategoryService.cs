@@ -15,12 +15,21 @@ namespace HTT_WebApp_.Services.Impl
             _db = db;
             _mapper = mapper;
         }
+        /// <summary>
+        /// Returns all categories from database.
+        /// </summary>
+        /// <returns>List of CategoriesDto</returns>
         public async Task<IEnumerable<CategoryDto>> GetAllAsync()
         {
             var categories = await _db.Categories.ToListAsync();
             return _mapper.Map<List<CategoryDto>>(categories);                         
         }
 
+        /// <summary>
+        /// Returns category from databse by Id. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>CategoryDto</returns>
         public async Task<CategoryDto?> GetByIdAsync(int id)
         {
             var category = await _db.Categories.FirstOrDefaultAsync(c => c.Id == id);

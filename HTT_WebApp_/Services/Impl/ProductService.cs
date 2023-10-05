@@ -15,6 +15,10 @@ namespace HTT_WebApp_.Services.Impl
             _db = db;
             _mapper = mapper;
         }
+        /// <summary>
+        /// Returns all products from database.
+        /// </summary>
+        /// <returns>List of ProductDto</returns>
         public async Task<IEnumerable<ProductDto>> GetAllAsync()
         {
             var products = await _db.Products.Include(p => p.Category).ToListAsync();
@@ -22,6 +26,11 @@ namespace HTT_WebApp_.Services.Impl
              
         }
 
+        /// <summary>
+        /// Returns product from database by Id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>ProductDto</returns>
         public async Task<ProductDto?> GetByIdAsync(int id)
         {
             var product = await _db.Products.FirstOrDefaultAsync(x => x.Id == id);

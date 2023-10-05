@@ -13,7 +13,7 @@ namespace HTT_WebApp_.Controllers
             _service = service;
         }
         /// <summary>
-        /// Returns all categories in database.
+        /// GET request all categories in database.
         /// </summary>
         /// <returns>List of Category</returns>
         public async Task<IActionResult> Categories()
